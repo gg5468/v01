@@ -1,11 +1,46 @@
 #include "app.h"
 #include <format>
+#include <sstream>
+#include <iomanip>
+
+using namespace std::string_literals;
 
 namespace vsite::oop::v1
 {
-/*
-* function implementations
-*/
+	std::string to_hex(unsigned int n) {
+        char s[64];
+        sprintf_s(s, "%X", n);
+        return std::string(s);
+	};
+	std::string to_exp(double n) {
+		std::stringstream ss;
+		ss << std::scientific << std::setprecision(2) << n;
+		return ss.str();
+	};
+    void mult_table(int n, std::stringstream& ss) {
+        if (n == 0 || n > 20) {
+            ss << "";
+            return;
+        }
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (j > 0) {
+                    ss << std::setw(4);
+                }
+                if (j == 0) {
+                    ss << i; 
+                }
+                else if (i == 0) {
+                    ss << std::setw(4) << j;
+                }
+                else {
+                    ss << std::setw(4) << i * j;
+                }
+            }
+            ss << "\n"; 
+        }
+    }
 
 } // namespace
 
