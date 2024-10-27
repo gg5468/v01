@@ -8,8 +8,11 @@ using namespace vsite::oop::v1;
 
 int main()
 {
+	int n;
 	std::stringstream ss;
-	mult_table(20, ss);
-
+	std::cin >> n;
+	std::cout << to_hex(n);
+	std::cout << "\n";
+	mult_table(n, ss);
 	std::cout << ss.str();
 }
