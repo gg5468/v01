@@ -1,5 +1,6 @@
 #include "app.h"
 #include <format>
+#include <string>
 #include <sstream>
 #include <iomanip>
 
@@ -8,16 +9,12 @@ using namespace std::string_literals;
 namespace vsite::oop::v1
 {
 	std::string to_hex(unsigned int n) {
-        char s[64];
-        sprintf_s(s, "%X", n);
-        return std::string(s);
+        return std::format("{:X}", n);
 	};
 	std::string to_exp(double n) {
-		std::stringstream ss;
-		ss << std::scientific << std::setprecision(2) << n;
-		return ss.str();
+        return std::format("{:.2e}", n);
 	};
-    void mult_table(int n, std::stringstream& ss) {
+    void mult_table(int n, std::ostream& ss) {
         if (n == 0 || n > 20) {
             ss << "";
             return;
